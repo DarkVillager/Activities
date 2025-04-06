@@ -1,3 +1,5 @@
+import { ActivityType, Assets, getTimestampsFromMedia } from 'premid'
+
 const presence = new Presence({
   clientId: '630494559956107285',
 })
@@ -18,18 +20,36 @@ async function getStrings() {
   })
 }
 
+let videos: HTMLVideoElement
+presence.on('iFrameData', (video: HTMLVideoElement) => {
+  videos = video
+})
+
 presence.on('UpdateData', async () => {
   const strings = await getStrings()
   const presenceData: PresenceData = {
     largeImageKey: 'https://cdn.rcd.gg/PreMiD/websites/G/Google%20Drive/assets/logo.png',
     details: strings.viewingPage,
   }
-  const path = document.location.pathname
-    .toLowerCase()
-    .replace(/(\/u\/(\d)+)/g, '')
+
   const privacy = await presence.getSetting<boolean>('privacy')
 
-  if (path.startsWith('/drive/folders')) {
+  const path = document.location.pathname
+    .toLowerCase()
+    .replace(/\/u\/\d+/g, '')
+
+  if (videos) {
+    const title = JSON.parse(document.querySelector('#drive-active-item-info')?.textContent ?? '')?.title
+    presenceData.type = ActivityType.Watching
+    presenceData.details = 'Watching a video'
+    presenceData.state = title
+    presenceData.smallImageKey = videos.paused ? Assets.Pause : Assets.Play
+    presenceData.smallImageText = videos.paused
+      ? 'Paused'
+      : 'Playing';
+    [presenceData.startTimestamp, presenceData.endTimestamp] = getTimestampsFromMedia(videos)
+  }
+  else if (path.startsWith('/drive/folders')) {
     presenceData.details = strings.viewingFolder
     if (!privacy)
       presenceData.state = document.title.replace('- Google Drive', '')
@@ -71,6 +91,9 @@ presence.on('UpdateData', async () => {
   else {
     presenceData.details = strings.browsing
   }
+
+  if (privacy && presenceData.state)
+    delete presenceData.state
 
   presence.setActivity(presenceData)
 })
