@@ -45,7 +45,7 @@ presence.on('UpdateData', async () => {
               : 'Browsing'
           break
         }
-        case pathname === '/about.html': {
+        case pathname === '/about': {
           presenceData.details = privacy === 0 || privacy === 1
             ? 'Viewing the about section'
             : privacy === 2
@@ -53,7 +53,7 @@ presence.on('UpdateData', async () => {
               : 'Browsing'
           break
         }
-        case pathname === '/team.html': {
+        case pathname === '/team': {
           presenceData.details = privacy === 0 || privacy === 1
             ? 'Viewing the team'
             : privacy === 2
@@ -61,7 +61,7 @@ presence.on('UpdateData', async () => {
               : 'Browsing'
           break
         }
-        case pathname === '/rules.html': {
+        case pathname === '/rules': {
           presenceData.details = privacy === 0 || privacy === 1
             ? 'Read the rules'
             : privacy === 2
@@ -71,7 +71,7 @@ presence.on('UpdateData', async () => {
           presenceData.buttons = [{ label: 'Read The Rules', url: href }]
           break
         }
-        case pathname === '/gallery.html': {
+        case pathname === '/gallery': {
           const totalPages = document.querySelectorAll('.btn.log.gray')
           presenceData.details = privacy === 0
             ? `Viewing the gallery - Page ${document.querySelector('.btn.log.active')?.textContent}/${totalPages[totalPages.length - 1]?.textContent}`
@@ -83,7 +83,7 @@ presence.on('UpdateData', async () => {
           presenceData.buttons = [{ label: 'View Images', url: href }]
           break
         }
-        case pathname === '/convoy.html': {
+        case pathname === '/convoy': {
           presenceData.details = privacy === 0 || privacy === 1
             ? 'Viewing all events'
             : privacy === 2
@@ -104,7 +104,7 @@ presence.on('UpdateData', async () => {
           presenceData.buttons = [{ label: 'View Event', url: href }]
           break
         }
-        case pathname === '/news.html': {
+        case pathname === '/news': {
           presenceData.details = privacy === 0 || privacy === 1
             ? 'Viewing all news'
             : privacy === 2
@@ -136,7 +136,7 @@ presence.on('UpdateData', async () => {
     case 'shop.nexonlogistics.com': {
       presenceData.name = 'Nexon Logistics Shop'
       switch (true) {
-        case pathname === '/index.html':
+        case pathname === '/index':
         case pathname === '':
         case pathname === '/': {
           presenceData.details = privacy === 0 || privacy === 1
@@ -146,7 +146,7 @@ presence.on('UpdateData', async () => {
               : 'Browsing'
           break
         }
-        case pathname === '/product.html': {
+        case pathname === '/product': {
           presenceData.details = privacy === 0 || privacy === 1
             ? 'Viewing all products'
             : privacy === 2
@@ -154,7 +154,7 @@ presence.on('UpdateData', async () => {
               : 'Browsing'
           break
         }
-        case pathname === '/contact.html': {
+        case pathname === '/contact': {
           presenceData.details = privacy === 0 || privacy === 1
             ? 'Viewing the contact page'
             : privacy === 2
@@ -329,7 +329,7 @@ presence.on('UpdateData', async () => {
               : 'Browsing'
           break
         }
-        case pathname === '/about.html': {
+        case pathname === '/about': {
           presenceData.details = privacy === 0 || privacy === 1
             ? 'Viewing the about section'
             : privacy === 2
@@ -337,7 +337,7 @@ presence.on('UpdateData', async () => {
               : 'Browsing'
           break
         }
-        case pathname === '/register.html': {
+        case pathname === '/register': {
           presenceData.details = privacy === 0 || privacy === 1
             ? 'Viewing the registration form'
             : privacy === 2
