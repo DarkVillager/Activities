@@ -10,7 +10,8 @@
     "prepare": "cd cli && npm ci && npm run build && cd .. && npm ci --ignore-scripts",
     "lint": "eslint . --cache",
     "lint:fix": "eslint . --fix --cache",
-    "dev": "pmd dev"
+    "dev": "pmd dev",
+    "zip": "pmd build nexon --zip"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^5.0.0",
