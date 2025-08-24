@@ -47,18 +47,12 @@
     {
       "id": "cover",
       "title": "Show Cover",
-      "if": {
-        "privacy": false
-      },
       "icon": "fas fa-images",
       "value": true
     },
     {
       "id": "buttons",
       "title": "Show Buttons",
-      "if": {
-        "privacy": false
-      },
       "icon": "fas fa-compress-arrows-alt",
       "value": true
     }

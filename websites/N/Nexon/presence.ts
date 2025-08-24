@@ -61,6 +61,75 @@ presence.on('UpdateData', async () => {
               : 'Browsing'
           break
         }
+        case pathname === '/divisions': {
+          presenceData.details = privacy === 0 || privacy === 1
+            ? 'Viewing all divisions'
+            : privacy === 2
+              ? 'Viewing a page'
+              : 'Browsing'
+          presenceData.buttons = [{ label: 'View Divisions', url: href }]
+          break
+        }
+        case pathname.includes('/divisions/'): {
+          presenceData.details = privacy === 0
+            ? 'Viewing division:'
+            : privacy === 1
+              ? 'Viewng a division'
+              : privacy === 2
+                ? 'Viewing a page'
+                : 'Browsing'
+          presenceData.state = document.querySelector('h1')?.textContent?.split(' ')?.[0] ?? 'Unknown'
+          presenceData.buttons = [{ label: 'View Division', url: href }]
+          break
+        }
+        case pathname === '/contracts': {
+          presenceData.details = privacy === 0 || privacy === 1
+            ? 'Viewing all contracts'
+            : privacy === 2
+              ? 'Viewing a page'
+              : 'Browsing'
+          presenceData.buttons = [{ label: 'View Contracts', url: href }]
+          break
+        }
+        case pathname.includes('/contracts/'): {
+          presenceData.details = privacy === 0
+            ? 'Viewing contract:'
+            : privacy === 1
+              ? 'Viewng a contract'
+              : privacy === 2
+                ? 'Viewing a page'
+                : 'Browsing'
+          presenceData.state = document.querySelector('h2')?.textContent?.split(' ')?.[0] ?? 'Unknown'
+          presenceData.buttons = [{ label: 'View Contracts', url: href }]
+          break
+        }
+        case pathname === '/tours': {
+          presenceData.details = privacy === 0 || privacy === 1
+            ? 'Viewing all tours'
+            : privacy === 2
+              ? 'Viewing a page'
+              : 'Browsing'
+          presenceData.buttons = [{ label: 'View Tours', url: href }]
+          break
+        }
+        case pathname === '/bank': {
+          presenceData.details = privacy === 0 || privacy === 1
+            ? 'Viewing the Nexon bank'
+            : privacy === 2
+              ? 'Viewing a page'
+              : 'Browsing'
+          presenceData.buttons = [{ label: 'View Bank', url: href }]
+          break
+        }
+        case pathname === '/statistics': {
+          presenceData.details = privacy === 0 || privacy === 1
+            ? 'Viewing statistics'
+            : privacy === 2
+              ? 'Viewing a page'
+              : 'Browsing'
+          presenceData.buttons = [{ label: 'View Statistics', url: href }]
+          break
+        }
         case pathname === '/rules': {
           presenceData.details = privacy === 0 || privacy === 1
             ? 'Read the rules'
